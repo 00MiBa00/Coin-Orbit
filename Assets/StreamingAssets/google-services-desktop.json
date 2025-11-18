@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "852754241654",
+    "project_id": "coinorbit-1b58c",
+    "storage_bucket": "coinorbit-1b58c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852754241654:ios:8b2644116c78a35811e757",
+        "android_client_info": {
+          "package_name": "com.ghjolkm.gamecoorb"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1EHQ2CcYqImqrSS4jOX_P3IfjFIamYSc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
