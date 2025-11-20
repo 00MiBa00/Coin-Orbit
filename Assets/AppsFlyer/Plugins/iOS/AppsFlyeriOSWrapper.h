@@ -13,27 +13,10 @@
 #else
 #import "AppsFlyerLib.h"
 #endif
-#if __has_include(<PurchaseConnector/PurchaseConnector.h>)
-#import <PurchaseConnector/PurchaseConnector.h>
-#else
-#import "PurchaseConnector.h"
-#endif
-#import <PurchaseConnector/PurchaseConnector-Swift.h>
 
-// Add StoreKit 2 support
-#if __has_include(<StoreKit/StoreKit.h>)
-#import <StoreKit/StoreKit.h>
-#endif
-
-@interface AppsFlyeriOSWarpper : NSObject <AppsFlyerLibDelegate, AppsFlyerDeepLinkDelegate, AppsFlyerPurchaseRevenueDelegate, AppsFlyerPurchaseRevenueDataSource, AppsFlyerPurchaseRevenueDataSourceStoreKit2>
-
+@interface AppsFlyeriOSWarpper : NSObject <AppsFlyerLibDelegate, AppsFlyerDeepLinkDelegate>
 + (BOOL) didCallStart;
 + (void) setDidCallStart:(BOOL)val;
-
-// Add StoreKit 2 methods
-- (void)setStoreKitVersion:(int)storeKitVersion;
-- (void)logConsumableTransaction:(id)transaction;
-
 @end
 
 
@@ -65,7 +48,3 @@ static NSString* startRequestObjectName = @"";
 static NSString* inAppRequestObjectName = @"";
 static NSString* onDeeplinkingObjectName = @"";
 
-static const char* PURCHASE_REVENUE_VALIDATION_CALLBACK = "didReceivePurchaseRevenueValidationInfo";
-static const char* PURCHASE_REVENUE_ERROR_CALLBACK = "didReceivePurchaseRevenueError";
-
-static NSString* onPurchaseValidationObjectName = @"";

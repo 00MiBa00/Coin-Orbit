@@ -18,7 +18,6 @@ static char* getCString(const char* string);
 static AppsFlyerLinkGenerator* generatorFromDictionary(NSDictionary* dictionary, AppsFlyerLinkGenerator*  generator);
 static EmailCryptType emailCryptTypeFromInt(int emailCryptTypeInt);
 static AppsFlyerAdRevenueMediationNetworkType mediationNetworkTypeFromInt(int mediationNetwork);
-static NSNumber *intFromNullableBool(const char *cStr);
 static NSString* stringFromDeepLinkResultStatus(AFSDKDeepLinkResultStatus deepLinkResult);
 static NSString* stringFromDeepLinkResultError(AppsFlyerDeepLinkResult *result);
 
