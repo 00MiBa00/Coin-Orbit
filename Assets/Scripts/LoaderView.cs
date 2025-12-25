@@ -1,34 +1,36 @@
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoaderView : MonoBehaviour
 {
-    private Coroutine _loadingCoroutine;
+    [SerializeField] private Image _image;
+    [SerializeField] private float _fadeDuration = 0.5f; // скорость моргания
+    [SerializeField] private float _totalTime = 20f;     // всего моргает 20 сек
+    [SerializeField] private float _targetAlpha = 0f;    // до какой альфы исчезает
 
-    private bool _canRotate;
+    private float _startAlpha;
+    private Tween _tween;
 
     private void OnEnable()
     {
-        _loadingCoroutine = StartCoroutine(DelayLoading());
+        _startAlpha = _image.color.a;
+        StartBlink();
     }
 
     private void OnDisable()
     {
-        StopCoroutine(_loadingCoroutine);
+        _tween?.Kill();
     }
 
-    private IEnumerator DelayLoading()
+    private void StartBlink()
     {
-        int sec = 20;
+        float cycleDuration = _fadeDuration * 2f;
+        
+        int loops = Mathf.FloorToInt(_totalTime / cycleDuration);
 
-        while (sec-- > 0)
-        {
-            Vector3 targetLoadingRotation = new Vector3(0, 0, gameObject.transform.localRotation.eulerAngles.z+350);
-            
-            gameObject.transform.DORotate(targetLoadingRotation, 1f, RotateMode.WorldAxisAdd);
-            
-            yield return new WaitForSeconds(1.1f);
-        }
+        _tween = _image
+            .DOFade(_targetAlpha, _fadeDuration)
+            .SetLoops(loops * 2, LoopType.Yoyo);
     }
 }
